@@ -11,15 +11,16 @@ button	{
 	margin: 1px;
 	height: 50px;
 	width: 50px;
-/*	margin: 1px;*/
+	font-size: 20px;
 }
 .display {
+	box-sizing: border-box;
 	height: 50px; width: 214px;
 	border: solid 1px;
 	text-align: right;
 	font-family: Arial;
 	font-size: 30px;
-	/*padding: 5px;*/
+	padding: 5px;
 }
 
 .zero {
@@ -28,11 +29,7 @@ button	{
 
 .enter {
 	height: 102px;
-	position: relative;
-	top: -26px;
-	left: -4px;
-	/*margin: 0;
-	padding: 0;*/
+	
 }
 .one-two-three-container, .enter {
 	display: inline-block;
@@ -41,3 +38,4 @@ button	{
 .one-two-three-enter-container {
 	display: block;
 }
+

@@ -6,36 +6,40 @@
 </head>
 <body>
   <div class="container">
-  <div class="seven-eight-container">
   <div class="display">1234567890</div>
-  <br>
-  <button class="operator divide">/</button>
-  <button class="operator multiply">*</button>
-  <button class="operator substruction">-</button>
-  <button class="operator addition">+</button>
-  <br>
-  <button class="digit seven">7</button>
-  <button class="digit eight">8</button>
-  <button class="digit nine">9</button>
-  <button class="operator clear">C</button>
-  <br>
-  <button class="digit four">4</button>
-  <button class="digit five">5</button>
-  <button class="digit six">6</button>
-  <button class="operator backspace"><-</button>
-  </div>
-  <div class="one-two-three-enter-container">
-  <div class="one-two-three-container">
-  <button class="digit one">1</button>
-  <button class="digit two">2</button>
-  <button class="digit three">3</button>
-  <br>
-  <button class="digit zero">0</button>
-  <button class="operator dot">.</button>
-  </div>
-  <button class="operator enter">=</button>
-  </div>
-  
+  <table>
+    <tr>
+      <td><button class="operator divide">/</button></td>
+      <td><button class="operator multiply">*</button></td>
+      <td><button class="operator substruction">-</button></td>
+      <td><button class="operator addition">+</button></td>
+    </tr>
+    <tr>
+      <td><button class="digit seven">7</button></td>
+      <td><button class="digit eight">8</button></td>
+      <td><button class="digit nine">9</button></td>
+      <td><button class="operator clear">C</button></td>
+    </tr>
+    <tr>
+      <td><button class="digit four">4</button></td>
+      <td><button class="digit five">5</button></td>
+      <td><button class="digit six">6</button></td>
+      <td><button class="operator backspace"><-</button></td>
+    </tr>
+    <tr>
+      <td><button class="digit one">1</button></td>
+      <td><button class="digit two">2</button></td>
+      <td><button class="digit three">3</button></td>
+      <td rowspan="2"><button class="operator enter">=</button></td>
+    </tr>
+    <tr>
+      <td colspan="2"><button class="digit zero">0</button></td>
+      <td><button class="operator dot">.</button></td>
+    </tr>
+
+  </table>
+
+
   
   </div>
 </body>
