@@ -21,6 +21,7 @@ button	{
 	font-family: Arial;
 	font-size: 30px;
 	padding: 5px;
+	margin-left: 4px; 
 }
 
 .zero {
