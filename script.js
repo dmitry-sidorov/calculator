@@ -1,25 +1,9 @@
-let str = '513+10*31-40/25';
-
-
-let operandArray = [];
-let operatorArray = [];
-let buffer = "";
-for (let i = 0; i < str.length; i++) {
-	if (isDigit(str[i])) {
-		buffer += str[i];
-	} else {
-		operandArray.push(buffer);
-		buffer = "";
-		operatorArray.push(str[i]);
-	}
-}
 
 
 
 
-console.log(str);
-console.log(operandArray);
-console.log(operatorArray);
+
+
 
 
 // let test1 = "1234567890";
@@ -38,6 +22,10 @@ console.log(operatorArray);
 
 let inputString = "";
 
+
+
+
+
 let numberString = "";
 document.addEventListener('keydown',(e) => {
 	console.log(keyAnalize(e.code));
@@ -48,6 +36,11 @@ document.addEventListener('keydown',(e) => {
 	// numberString += e.code;
 	// console.log(typeof e.code);
 });
+
+
+
+
+
 
 function keyAnalize(key) {
 	switch (key) {
@@ -104,10 +97,27 @@ function keyAnalize(key) {
 	}
 }
 
-function expParse(expression) {
-	
+let operandArray = [];
+let operatorArray = [];
+let buffer = "";
+stringParse(inputString);
+
+
+
+function stringParse(str) {
+	for (let i = 0; i < str.length; i++) {
+	if (isDigit(str[i])) {
+		buffer += str[i];
+	} else {
+		operandArray.push(buffer);
+		buffer = "";
+		operatorArray.push(str[i]);
+	}
+}
 }
 
+console.log(operandArray);
+console.log(operatorArray);
 
 
 
@@ -153,7 +163,7 @@ function expParse(expression) {
 function add(a, b) {
 	return (a + b);
 }
-function substract(a, b) {
+function subtract(a, b) {
 	return (a - b);
 }
 function multiply(a, b) {
