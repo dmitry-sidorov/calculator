@@ -1,46 +1,41 @@
+let inputString = "1234*45+678/9-10";
+let operandArray = [];
+let operatorArray = [];
+keyParse(inputString);
+console.log(inputString);
+console.log(operandArray, operatorArray);
+
+// document.addEventListener('keydown',(e) => {
+// 	// console.log(keyAnalize(e.code));
+// 	console.log(e.code);
+// 	inputString += keyAnalize(e.code);
+// 	keyParse(inputString);
+// 	console.log(inputString);
+// 	console.log(operandArray);
+// 	console.log(operatorArray);
+// });
 
 
+// function calculate(argumentArray, operationsArray) {
+// 	for (let i = 0; i < operationsArray.length; i++){
+// 		let operation = 
+// 	}
+// }
 
 
-
-
-
-
-// let test1 = "1234567890";
-// let test2 = "qwerty";
-
-// // function testFun(testValue) {
-// // 	for (let i = 0; i < testValue.length; i++){
-// // 		console.log({testValue[i]: numberCheck(testValue[i])});
-// // 	}
-// // }
-
-// // testFun(test1);
-// // testFun(test2);
-// console.log(test1, numberCheck(test1));
-// console.log(test2, numberCheck(test2));
-
-let inputString = "";
-
-
-
-
-
-let numberString = "";
-document.addEventListener('keydown',(e) => {
-	console.log(keyAnalize(e.code));
-	console.log(e.code);
-	inputString += keyAnalize(e.code);
-	
-	// console.log(typeof result);
-	// numberString += e.code;
-	// console.log(typeof e.code);
-});
-
-
-
-
-
+function keyParse(mixedString) {
+	let buffer = "";
+	for (let i = 0; i < mixedString.length; i++) {
+		if (isDigit(mixedString[i])) {
+			buffer+=mixedString[i];
+			console.log('buffer is' + buffer);
+		} else {
+			operandArray.push(buffer);
+			buffer = "";
+			operatorArray.push(mixedString[i]);
+		}
+	}
+}
 
 function keyAnalize(key) {
 	switch (key) {
@@ -97,31 +92,42 @@ function keyAnalize(key) {
 	}
 }
 
-let operandArray = [];
-let operatorArray = [];
-let buffer = "";
-stringParse(inputString);
-
-
-
-function stringParse(str) {
-	for (let i = 0; i < str.length; i++) {
-	if (isDigit(str[i])) {
-		buffer += str[i];
-	} else {
-		operandArray.push(buffer);
-		buffer = "";
-		operatorArray.push(str[i]);
+function operatorSwitch(a, b, operator) {
+	switch (operator) {
+		case "+": return add(a, b);
+		break;
+		case "-": return subtract(a, b);
+		break;
+		case "*": return multiply(a, b);
+		break;
+		case "/": return divide(a, b);
+		break;
 	}
 }
+
+function add(a, b) {
+	return (parseInt(a) + parseInt(b)).toString();
+}
+function subtract(a, b) {
+	return (parseInt(a) - parseInt(b)).toString();
+}
+function multiply(a, b) {
+	return (parseInt(a) * parseInt(b)).toString();
+}
+function divide(a, b) {
+	a = parseInt(a);
+	b = parseInt(b);
+	if (b === 0) return "Dividing by 0 error!";
+	else return (a / b).toString();
+}
+function isDigit(num) {
+	if (/\d/g.test(num)) return true;
+	else if (/\D/g.test(num)) return false;
 }
 
-console.log(operandArray);
-console.log(operatorArray);
 
 
-
-
+//--------------------------------------------------------//
 
 // function inputCaptcha(variable) {
 // 	let zero = document.querySelector('.zero');
@@ -156,27 +162,3 @@ console.log(operatorArray);
 // 	numberArray[i] = Number.parseInt(str);
 // 	let numLength = numberArray.toString().length;
 // }
-
-
-
-
-function add(a, b) {
-	return (a + b);
-}
-function subtract(a, b) {
-	return (a - b);
-}
-function multiply(a, b) {
-	return (a * b);
-}
-function divide(a, b) {
-	if (b === 0) return "Dividing by 0 error!";
-	else return (a / b);
-}
-function isDigit(num) {
-	if (/\d/g.test(num)) return true;
-	else if (/\D/g.test(num)) return false;
-}
-
-
-
