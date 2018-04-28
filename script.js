@@ -2,26 +2,23 @@ let inputString = "";
 let operandArray = [];
 let operatorArray = [];
 
-
+let display = document.querySelector('.display');
 
 document.addEventListener('keydown',(e) => {
-	// console.log(keyAnalize(e.code));
-	
 	console.log(e.code);
-	inputString += keyAnalize(e.code);
+	// inputString += press(keyAnalize(e.code));
+	console.log(e);
 	console.log(inputString);
-	console.log('Before calculation: ', operandArray, operatorArray);
-
-	console.log('After calculation: ', operandArray, operatorArray);
-	// console.log(inputString);
-	// console.log(operandArray);
-	// console.log(operatorArray);
+	// let num = keyAnalize(e.code);
+	press(keyAnalize(e.code));
+	e.blur();
+	// display.textContent = inputString;
 });
 
 
 
-keyParse(inputString);
-calculate(operandArray, operatorArray);
+// keyParse(inputString);
+// calculate(operandArray, operatorArray);
 
 
 
@@ -54,55 +51,55 @@ function keyParse(mixedString) {
 function keyAnalize(key) {
 	switch (key) {
 		case "Digit0": 
-		case "Numpad0": return "0";
+		case "Numpad0": return ("0");
 		break;
 		case "Digit1":
-		case "Numpad1": return "1";
+		case "Numpad1": return ("1");
 		break;
 		case "Digit2":
-		case "Numpad2": return "2";
+		case "Numpad2": return ("2");
 		break;
 		case "Digit3":
-		case "Numpad3": return "3";
+		case "Numpad3": return ("3");
 		break;
 		case "Digit4":
-		case "Numpad4": return "4";
+		case "Numpad4": return ("4");
 		break;
 		case "Digit5":
-		case "Numpad5": return "5";
+		case "Numpad5": return ("5");
 		break;
 		case "Digit6":
-		case "Numpad6": return "6";
+		case "Numpad6": return ("6");
 		break;
 		case "Digit7":
-		case "Numpad7": return "7";
+		case "Numpad7": return ("7");
 		break;
 		case "Digit8":
-		case "Numpad8": return "8";
+		case "Numpad8": return ("8");
 		break;
 		case "Digit9":
-		case "Numpad9": return "9";
+		case "Numpad9": return ("9");
 		break;
-		case "NumpadDivide": return "/";
+		case "NumpadDivide": return ("/");
 		break;
-		case "NumpadMultiply": return "*";
+		case "NumpadMultiply": return ("*");
 		break;
-		case "NumpadSubtract": return "-";
+		case "NumpadSubtract": return ("-");
 		break;
-		case "NumpadAdd": return "+";
+		case "NumpadAdd": return ("+");
 		break;
 		case "NumpadEnter":
-		case "Enter": return "=";
+		case "Enter": return ("=");
 		break;
 		case "NumpadDecimal":
 		case "Period":
-		case "Comma": return ".";
+		case "Comma": return (".");
 		break;
-		case "Backspace": return "b";
+		case "Backspace": return ("b");
 		break;
-		case "Delete": return "d";
+		case "Delete": return ("d");
 		break;
-		default: return "";
+		default: return ("");
 	}
 }
 
@@ -138,35 +135,51 @@ function isDigit(num) {
 	if (/\d/g.test(num)) return true;
 	else if (/\D/g.test(num)) return false;
 }
-
+function press(arg) {
+	inputString += arg;
+	display.textContent = inputString;
+}
 
 
 //--------------------------------------------------------//
 
-// function inputCaptcha(variable) {
-// 	let zero = document.querySelector('.zero');
-// 	zero.addEventListener('click', variable.concat("0"));
-// 	let one = document.querySelector('.one');
-// 	one.addEventListener('click', variable.concat("1"));
-// 	let two = document.querySelector('.two');
-// 	two.addEventListener('click', variable.concat("2"));
-// 	let three = document.querySelector('.three');
-// 	three.addEventListener('click', variable.concat("3"));
-// 	let four = document.querySelector('.four');
-// 	four.addEventListener('click', variable.concat("4"));
-// 	let five = document.querySelector('.five');
-// 	five.addEventListener('click', variable.concat("5"));
-// 	let six = document.querySelector('.six');
-// 	six.addEventListener('click', variable.concat("6"));
-// 	let seven = document.querySelector('.seven');
-// 	seven.addEventListener('click', variable.concat("7"));
-// 	let eight = document.querySelector('.eight');
-// 	eight.addEventListener('click', variable.concat("8"));
-// 	let nine = document.querySelector('.nine');
-// 	nine.addEventListener('click', variable.concat("9"));
-// 	let dot = document.querySelector('.dot');
-// 	dot.addEventListener('click', variable.concat("."));
-// }
+
+	let zero = document.querySelector('.zero');
+	zero.addEventListener('click', (e) => {
+		press("0");
+		// display.textContent = inputString;
+	});
+	let one = document.querySelector('.one');
+	one.addEventListener('click', (e) => {
+		press("1")});
+	let two = document.querySelector('.two');
+	two.addEventListener('click', (e) => {
+		press("2")});
+	let three = document.querySelector('.three');
+	three.addEventListener('click', (e) => {
+		press("3")});
+	let four = document.querySelector('.four');
+	four.addEventListener('click', (e) => {
+		press("4")});
+	let five = document.querySelector('.five');
+	five.addEventListener('click', (e) => {
+		press("5")});
+	let six = document.querySelector('.six');
+	six.addEventListener('click', (e) => {
+		press("6")});
+	let seven = document.querySelector('.seven');
+	seven.addEventListener('click', (e) => {
+		press("7")});
+	let eight = document.querySelector('.eight');
+	eight.addEventListener('click', (e) => {
+		press("8")});
+	let nine = document.querySelector('.nine');
+	nine.addEventListener('click', (e) => {
+		press("9")});
+	let dot = document.querySelector('.dot');
+	dot.addEventListener('click', (e) => {
+		press(".")});
+
 
 
 
