@@ -6,20 +6,11 @@ let display = document.querySelector('.display');
 
 document.addEventListener('keydown',(e) => {
 	console.log(e.code);
-	// inputString += press(keyAnalize(e.code));
 	console.log(e);
 	console.log(inputString);
-	// let num = keyAnalize(e.code);
 	press(keyAnalize(e.code));
-	e.blur();
-	// display.textContent = inputString;
+	
 });
-
-
-
-// keyParse(inputString);
-// calculate(operandArray, operatorArray);
-
 
 
 function calculate(argumentsArray, operationsArray) {
@@ -137,55 +128,61 @@ function isDigit(num) {
 }
 function press(arg) {
 	inputString += arg;
+	displayRefresh();
+}
+
+function displayRefresh() {
 	display.textContent = inputString;
 }
 
+let zero = document.querySelector('.zero');
+zero.addEventListener('click', (e) => {
+	press("0");
+});
+let one = document.querySelector('.one');
+one.addEventListener('click', (e) => {
+	press("1")});
+let two = document.querySelector('.two');
+two.addEventListener('click', (e) => {
+	press("2")});
+let three = document.querySelector('.three');
+three.addEventListener('click', (e) => {
+	press("3")});
+let four = document.querySelector('.four');
+four.addEventListener('click', (e) => {
+	press("4")});
+let five = document.querySelector('.five');
+five.addEventListener('click', (e) => {
+	press("5")});
+let six = document.querySelector('.six');
+six.addEventListener('click', (e) => {
+	press("6")});
+let seven = document.querySelector('.seven');
+seven.addEventListener('click', (e) => {
+	press("7")});
+let eight = document.querySelector('.eight');
+eight.addEventListener('click', (e) => {
+	press("8")});
+let nine = document.querySelector('.nine');
+nine.addEventListener('click', (e) => {
+	press("9")});
+let dot = document.querySelector('.dot');
+dot.addEventListener('click', (e) => {
+	press(".")});
 
-//--------------------------------------------------------//
+let clear = document.querySelector('.clear');
+clear.addEventListener('click', (e) => {
+	inputString = "";
+	displayRefresh();
+});
 
+function backspaceOn() {
+	inputString = inputString.slice(0, -1);
+}
 
-	let zero = document.querySelector('.zero');
-	zero.addEventListener('click', (e) => {
-		press("0");
-		// display.textContent = inputString;
-	});
-	let one = document.querySelector('.one');
-	one.addEventListener('click', (e) => {
-		press("1")});
-	let two = document.querySelector('.two');
-	two.addEventListener('click', (e) => {
-		press("2")});
-	let three = document.querySelector('.three');
-	three.addEventListener('click', (e) => {
-		press("3")});
-	let four = document.querySelector('.four');
-	four.addEventListener('click', (e) => {
-		press("4")});
-	let five = document.querySelector('.five');
-	five.addEventListener('click', (e) => {
-		press("5")});
-	let six = document.querySelector('.six');
-	six.addEventListener('click', (e) => {
-		press("6")});
-	let seven = document.querySelector('.seven');
-	seven.addEventListener('click', (e) => {
-		press("7")});
-	let eight = document.querySelector('.eight');
-	eight.addEventListener('click', (e) => {
-		press("8")});
-	let nine = document.querySelector('.nine');
-	nine.addEventListener('click', (e) => {
-		press("9")});
-	let dot = document.querySelector('.dot');
-	dot.addEventListener('click', (e) => {
-		press(".")});
+let backspace = document.querySelector('.backspace');
+backspace.addEventListener('click', (e) => {
+	backspaceOn();
+	displayRefresh();
+});
 
-
-
-
-
-// let operatorArray = [];
-// for (let i = 0; i < str.length; i++) {
-// 	numberArray[i] = Number.parseInt(str);
-// 	let numLength = numberArray.toString().length;
-// }
