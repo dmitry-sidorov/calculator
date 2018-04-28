@@ -1,38 +1,52 @@
-let inputString = "1234*45+678/9-10";
+let inputString = "";
 let operandArray = [];
 let operatorArray = [];
+
+
+
+document.addEventListener('keydown',(e) => {
+	// console.log(keyAnalize(e.code));
+	
+	console.log(e.code);
+	inputString += keyAnalize(e.code);
+	console.log(inputString);
+	console.log('Before calculation: ', operandArray, operatorArray);
+
+	console.log('After calculation: ', operandArray, operatorArray);
+	// console.log(inputString);
+	// console.log(operandArray);
+	// console.log(operatorArray);
+});
+
+
+
 keyParse(inputString);
-console.log(inputString);
-console.log(operandArray, operatorArray);
-
-// document.addEventListener('keydown',(e) => {
-// 	// console.log(keyAnalize(e.code));
-// 	console.log(e.code);
-// 	inputString += keyAnalize(e.code);
-// 	keyParse(inputString);
-// 	console.log(inputString);
-// 	console.log(operandArray);
-// 	console.log(operatorArray);
-// });
+calculate(operandArray, operatorArray);
 
 
-// function calculate(argumentArray, operationsArray) {
-// 	for (let i = 0; i < operationsArray.length; i++){
-// 		let operation = 
-// 	}
-// }
 
+function calculate(argumentsArray, operationsArray) {
+	const length = operationsArray.length;
+	for (let i = 0; i < length; i++){
+		let first = argumentsArray.shift();
+		let second = argumentsArray.shift();
+		let operator = operationsArray.shift();
+		argumentsArray.unshift (operatorSwitch(first, second, operator));
+	}
+}
 
 function keyParse(mixedString) {
 	let buffer = "";
-	for (let i = 0; i < mixedString.length; i++) {
+	for (let i = 0; i <= mixedString.length; i++) {
 		if (isDigit(mixedString[i])) {
 			buffer+=mixedString[i];
 			console.log('buffer is' + buffer);
 		} else {
 			operandArray.push(buffer);
 			buffer = "";
-			operatorArray.push(mixedString[i]);
+			if (mixedString.length !== i) {
+				operatorArray.push(mixedString[i]);
+			}
 		}
 	}
 }
