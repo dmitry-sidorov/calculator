@@ -4,7 +4,27 @@ body {
 }
 
 .container {
-	
+	height: 400px; width: 280px;
+	background-color: lightgrey;
+	border-radius: 5px;
+}
+.digit {
+	background-color: #FF9966;
+}
+.operator {
+	background-color: #6699CC;
+}
+
+table {
+	position: relative;
+	left: 20px;
+	top: 30px;
+}
+
+textarea {
+	position: relative;
+	left: 20px;
+	top: 30px;
 }
 
 button	{
@@ -12,6 +32,8 @@ button	{
 	height: 50px;
 	width: 50px;
 	font-size: 20px;
+	border-radius: 5px;
+	background-color: white;
 }
 .display {
 	box-sizing: border-box;

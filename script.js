@@ -1,7 +1,4 @@
 let inputString = "";
-let operandArray = [];
-let operatorArray = [];
-
 let display = document.querySelector('.display');
 
 document.addEventListener('keydown',(e) => {
@@ -9,22 +6,31 @@ document.addEventListener('keydown',(e) => {
 	console.log(e);
 	console.log(inputString);
 	press(keyAnalize(e.code));
-	
 });
 
-
-function calculate(argumentsArray, operationsArray) {
-	const length = operationsArray.length;
-	for (let i = 0; i < length; i++){
-		let first = argumentsArray.shift();
-		let second = argumentsArray.shift();
-		let operator = operationsArray.shift();
-		argumentsArray.unshift (operatorSwitch(first, second, operator));
+function calculate() {
+	let array = keyParse(inputString);
+	let operandArray = array[0];
+	let operatorArray = array[1];
+	for (let i = 0; i < operatorArray.length; i++) {
+		let first = operandArray.shift();
+		let second = operandArray.shift();
+		operandArray.unshift (operatorSwitch(first, second, operatorArray[i]));
+		console.log(operandArray);
+		console.log(operatorArray);
 	}
+	console.log (operandArray[0], typeof operandArray[0]);
+	inputString = operandArray[0];
+	// console.log('Array of numbers: ', operandArray);
+	// console.log('Array of operations: ', operatorArray);
+	// console.log('Input string: ', inputString);
+	displayRefresh();
 }
 
 function keyParse(mixedString) {
 	let buffer = "";
+	let operandArray = [];
+	let operatorArray = [];
 	for (let i = 0; i <= mixedString.length; i++) {
 		if (isDigit(mixedString[i])) {
 			buffer+=mixedString[i];
@@ -36,7 +42,8 @@ function keyParse(mixedString) {
 				operatorArray.push(mixedString[i]);
 			}
 		}
-	}
+	} 
+	return [operandArray, operatorArray];
 }
 
 function keyAnalize(key) {
@@ -80,15 +87,18 @@ function keyAnalize(key) {
 		case "NumpadAdd": return ("+");
 		break;
 		case "NumpadEnter":
-		case "Enter": return ("=");
+		case "Enter": calculate();
+		return ("");
 		break;
 		case "NumpadDecimal":
 		case "Period":
 		case "Comma": return (".");
 		break;
-		case "Backspace": return ("b");
+		case "Backspace": backspaceOn();
+		return ("");
 		break;
-		case "Delete": return ("d");
+		case "Delete": inputStringRefresh();
+		return ("");
 		break;
 		default: return ("");
 	}
@@ -108,22 +118,22 @@ function operatorSwitch(a, b, operator) {
 }
 
 function add(a, b) {
-	return (parseInt(a) + parseInt(b)).toString();
+	return (Number(a) + Number(b)).toString();
 }
 function subtract(a, b) {
-	return (parseInt(a) - parseInt(b)).toString();
+	return (Number(a) - Number(b)).toString();
 }
 function multiply(a, b) {
-	return (parseInt(a) * parseInt(b)).toString();
+	return (Number(a) * Number(b)).toString();
 }
 function divide(a, b) {
-	a = parseInt(a);
-	b = parseInt(b);
+	a = Number(a);
+	b = Number(b);
 	if (b === 0) return "Dividing by 0 error!";
 	else return (a / b).toString();
 }
 function isDigit(num) {
-	if (/\d/g.test(num)) return true;
+	if (/\d/g.test(num) || num === ".") return true;
 	else if (/\D/g.test(num)) return false;
 }
 function press(arg) {
@@ -133,6 +143,14 @@ function press(arg) {
 
 function displayRefresh() {
 	display.textContent = inputString;
+}
+
+function inputStringRefresh() {
+	inputString = "";
+}
+function backspaceOn() {
+	inputString = inputString.slice(0, -1);
+	displayRefresh();
 }
 
 let zero = document.querySelector('.zero');
@@ -169,20 +187,17 @@ nine.addEventListener('click', (e) => {
 let dot = document.querySelector('.dot');
 dot.addEventListener('click', (e) => {
 	press(".")});
-
-let clear = document.querySelector('.clear');
-clear.addEventListener('click', (e) => {
-	inputString = "";
-	displayRefresh();
-});
-
-function backspaceOn() {
-	inputString = inputString.slice(0, -1);
-}
-
 let backspace = document.querySelector('.backspace');
 backspace.addEventListener('click', (e) => {
 	backspaceOn();
+});
+let enter = document.querySelector('.enter');
+enter.addEventListener('click', (e) => {
+	calculate();
+});
+let clear = document.querySelector('.clear');
+clear.addEventListener('click', (e) => {
+	inputStringRefresh();
 	displayRefresh();
 });
 
