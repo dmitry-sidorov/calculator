@@ -4,9 +4,12 @@ body {
 }
 
 .container {
-	height: 400px; width: 280px;
+	/*height: 450px; width: 280px;*/
+	height: 900px; width: 560px;
 	background-color: lightgrey;
 	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .digit {
 	background-color: #FF9966;
@@ -15,43 +18,62 @@ body {
 	background-color: #6699CC;
 }
 
+.previous {
+	/*height: 30px; width: 214px;*/
+	height: 60px; width: 428px;
+	border: 1px solid black;
+	/*font-size: 20px;*/
+	font-size: 40px;
+	text-align: right;
+}
+
 table {
 	position: relative;
-	left: 20px;
-	top: 30px;
+	/*left: 20px; top: 30px;*/
+	left: 40px; top: 60px;
 }
 
 textarea {
-	position: relative;
-	left: 20px;
-	top: 30px;
+	background-color: white;
+	/*height: 50px; width: 214px;*/
+	height: 100px; width: 428px;
+	resize: none;
 }
 
 button	{
-	margin: 1px;
-	height: 50px;
-	width: 50px;
-	font-size: 20px;
-	border-radius: 5px;
+	/*margin: 1px;*/
+	margin: 2px;
+	/*height: 50px;	width: 50px;*/
+	height: 100px;	width: 100px;
+	/*font-size: 20px;*/
+	font-size: 40px;
+	/*border-radius: 5px;*/
+	border-radius: 10px;
 	background-color: white;
 }
 .display {
 	box-sizing: border-box;
-	height: 50px; width: 214px;
+	/*height: 50px; width: 214px;*/
+	height: 100px; width: 428px;
 	border: solid 1px;
 	text-align: right;
 	font-family: Arial;
-	font-size: 30px;
-	padding: 5px;
-	margin-left: 4px; 
+	/*font-size: 30px;*/
+	font-size: 60px;
+	/*padding: 5px;*/
+	padding: 10px;
+	/*margin-left: 4px; */
+	margin-left: 8px; 
 }
 
 .zero {
-	width: 106px;
+	/*width: 106px;*/
+	width: 212px;
 }
 
 .enter {
-	height: 102px;
+	/*height: 102px;*/
+	height: 204px;
 	
 }
 .one-two-three-container, .enter {

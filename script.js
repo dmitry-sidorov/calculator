@@ -3,9 +3,10 @@ let display = document.querySelector('.display');
 
 document.addEventListener('keydown',(e) => {
 	console.log(e.code);
-	console.log(e);
+	console.log(e.key);
 	console.log(inputString);
 	press(keyAnalize(e.code));
+	press(keySymbolAnalize(e.key));
 });
 
 function calculate() {
@@ -46,8 +47,22 @@ function keyParse(mixedString) {
 	return [operandArray, operatorArray];
 }
 
-function keyAnalize(key) {
+function keySymbolAnalize(key) {
 	switch (key) {
+		case "+": return ("+");
+		break;
+		case "-": return ("-");
+		break;
+		case "*": return ("*");
+		break;
+		case "/": return ("/");
+		break;
+		default: return ("");
+	}
+}
+
+function keyAnalize(code) {
+	switch (code) {
 		case "Digit0": 
 		case "Numpad0": return ("0");
 		break;
@@ -78,14 +93,14 @@ function keyAnalize(key) {
 		case "Digit9":
 		case "Numpad9": return ("9");
 		break;
-		case "NumpadDivide": return ("/");
-		break;
-		case "NumpadMultiply": return ("*");
-		break;
-		case "NumpadSubtract": return ("-");
-		break;
-		case "NumpadAdd": return ("+");
-		break;
+		// case "NumpadDivide": return ("/");
+		// break;
+		// case "NumpadMultiply": return ("*");
+		// break;
+		// case "NumpadSubtract": return ("-");
+		// break;
+		// case "NumpadAdd": return ("+");
+		// break;
 		case "NumpadEnter":
 		case "Enter": calculate();
 		return ("");
@@ -143,6 +158,10 @@ function press(arg) {
 
 function displayRefresh() {
 	display.textContent = inputString;
+	if (inputString.length > 11) {
+		// display.setAttribute('style', 'font-size: 15px');
+		display.setAttribute('style', 'font-size: 30px');
+	}
 }
 
 function inputStringRefresh() {
