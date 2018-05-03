@@ -32,13 +32,19 @@ function keyParse(mixedString) {
 	let buffer = "";
 	let operandArray = [];
 	let operatorArray = [];
+	let isOperator = false;
 	for (let i = 0; i <= mixedString.length; i++) {
 		if (isDigit(mixedString[i])) {
 			buffer+=mixedString[i];
+			isOperator = false;
 			console.log('buffer is' + buffer);
 		} else {
 			operandArray.push(buffer);
+			if (isOperator === true) {
+				operatorArray.pop();
+			}
 			buffer = "";
+			isOperator = true;
 			if (mixedString.length !== i) {
 				operatorArray.push(mixedString[i]);
 			}
